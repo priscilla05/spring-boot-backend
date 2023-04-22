@@ -1,5 +1,6 @@
 package com.devpri.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -10,6 +11,8 @@ import java.util.Objects;
 @Entity
 public class ItemPedido implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @JsonIgnore // não vai ser serializado
     @EmbeddedId // id embutido em um tipo auxiliar
     private ItemPedidoPKey id = new ItemPedidoPKey(); // esse id é um atributo composto
 
@@ -29,6 +32,7 @@ public class ItemPedido implements Serializable {
         this.preco = preco;
     }
 
+    @JsonIgnore
     public Pedido getPedido(){
         return id.getPedido();
     }

@@ -1,6 +1,7 @@
 package com.devpri.cursomc.domain;
 
 import com.devpri.cursomc.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -27,6 +28,7 @@ public class Cliente implements Serializable {
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
+    @JsonBackReference    // os pedidos do cliente n vao ser serializados
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos= new ArrayList<>();
 

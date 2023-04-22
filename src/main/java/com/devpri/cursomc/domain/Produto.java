@@ -1,6 +1,7 @@
 package com.devpri.cursomc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -24,6 +25,7 @@ public class Produto implements Serializable {
 
     private List<Categoria> categorias = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.produto")
     private Set<ItemPedido> itens = new HashSet<>(); //o produto conhece os itens associados a ele
 
@@ -37,6 +39,7 @@ public class Produto implements Serializable {
         this.preco = preco;
     }// categoria ja foi inicializada mais acima, ela n entra no construtor nao!
 
+    @JsonIgnore
     public List<Pedido> getPedidos(){
         List<Pedido> lista = new ArrayList<>();
         for (ItemPedido x: itens) {
