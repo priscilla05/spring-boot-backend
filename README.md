@@ -18,7 +18,7 @@ o Bidirecionais / direcionadas
 * Classe de associação
 * Herança
 * Enumerações
-* Atributos Embedded (ItemPedidoPK)
+* Atributos Embedded (ItemPedidoPKey)
 * Coleções ElementCollection (telefones de um cliente)
 Ao longo do capítulo também vamos discutir e mostrar boas práticas de Engenharia de Software tais como
 desenvolvimento em camadas e tratamento de exceções.
