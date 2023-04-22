@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Produto implements Serializable {
-    private static final long serialVersion=1L;
+    private static final long serialVersionUID= 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +24,9 @@ public class Produto implements Serializable {
 
     private List<Categoria> categorias = new ArrayList<>();
 
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemPedido> itens = new HashSet<>(); //o produto conhece os itens associados a ele
+
     public Produto(){
 
     }
@@ -35,6 +36,15 @@ public class Produto implements Serializable {
         this.nome = nome;
         this.preco = preco;
     }// categoria ja foi inicializada mais acima, ela n entra no construtor nao!
+
+    public List<Pedido> getPedidos(){
+        List<Pedido> lista = new ArrayList<>();
+        for (ItemPedido x: itens) {
+            lista.add(x.getPedido());
+            
+        }
+        return lista;
+    }
 
     public Integer getId() {
         return id;
@@ -66,6 +76,14 @@ public class Produto implements Serializable {
 
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
+    }
+
+    public Set<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(Set<ItemPedido> itens) {
+        this.itens = itens;
     }
 
     @Override
