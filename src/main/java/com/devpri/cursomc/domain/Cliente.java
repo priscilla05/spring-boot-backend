@@ -1,10 +1,8 @@
 package com.devpri.cursomc.domain;
 
 import com.devpri.cursomc.domain.enums.TipoCliente;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -20,7 +18,7 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipo; // internamente meu tipo será inteiro, p expor é TipoCliente
 
-    @JsonManagedReference
+
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
@@ -28,7 +26,7 @@ public class Cliente implements Serializable {
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
-    @JsonBackReference    // os pedidos do cliente n vao ser serializados
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos= new ArrayList<>();
 
