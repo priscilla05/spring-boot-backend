@@ -23,4 +23,5 @@ o Bidirecionais / direcionadas
 Ao longo do capítulo também vamos discutir e mostrar boas práticas de Engenharia de Software tais como
 desenvolvimento em camadas e tratamento de exceções.
 
+Os testes com os Endpoints foram feitos através do Postman
 
