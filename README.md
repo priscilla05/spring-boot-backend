@@ -1,5 +1,6 @@
 # cursomc
 ## Projetinho do curso com Prof Nelio Alves de SpringBoot,JPA, Hibernate da Udemy
+## Fazendo um CRUD - (ANDAMENTO)
 
 Objetivo: o mostrar na prática como um modelo conceitual (modelo de
 domínio em nível de análise) pode ser implementado sobre o paradigma orientado a objetos, usando padrões de
